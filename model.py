@@ -18,7 +18,7 @@ with open('./driving_log.csv') as csvfile:
 
 train_samples, validation_samples = train_test_split(samples, test_size=0.3)
 
-def generator(samples, batch_size=16):
+def generator(samples, batch_size=1):
 	num_samples = len(samples)
 	while 1:
 		sklearn.utils.shuffle(samples)
@@ -30,17 +30,14 @@ def generator(samples, batch_size=16):
 			augmented_angles = []
             
 			for batch_sample in batch_samples:
-				#for camera_idx in range(3):
-					#source_path = line[camera_idx]
-				source_path = line[1]
-				name = './IMG/'+batch_sample[0].split('/')[-1]
-				image = cv2.imread(name)
-				image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-				images.append(image)	
-				angle = float(batch_sample[3])
-				#angles.append(angle)
-				angles.append(angle+correction)
-				#angles.append(angle-correction)
+				for camera_idx in range(3):
+					name = './IMG/'+batch_sample[camera_idx].split('/')[-1]
+					image = cv2.imread(name)
+					images.append(image)	
+					angle = float(batch_sample[3])
+					angles.append(angle)
+					angles.append(angle+correction)
+					angles.append(angle-correction)
 
 			for image, angle in zip(images, angles):
 				augmented_images.append(image)
@@ -56,19 +53,6 @@ def generator(samples, batch_size=16):
 
 train_generator = generator(train_samples, batch_size=1)
 validation_generator = generator(validation_samples, batch_size=1)
-
-"""
-X_train, y_train = next(train_generator)
-X_validation, y_validation = next(validation_generator)
-
-n, bins, patches = plt.hist(y_train, 40, facecolor='green', alpha=0.75,label=['Training data'])
-n, bins, patches = plt.hist(y_validation, 40, facecolor='red', alpha=0.75,label=['Validation data'])
-plt.xlabel('Steering value')
-plt.ylabel('Number of images')
-plt.title('Histogram of steering values')
-plt.legend()
-plt.savefig('histogram.png', bbox_inches='tight')
-"""
 
 model = Sequential()
 model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
