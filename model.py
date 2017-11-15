@@ -5,7 +5,7 @@ import sklearn
 import os
 import matplotlib.pyplot as plt
 from keras.models import Sequential
-from keras.layers import Flatten, Dense, Lambda, Dropout, Activation, ELU
+from keras.layers import Flatten, Dense, Lambda, Dropout, Activation
 from keras.layers.convolutional import Convolution2D, Cropping2D
 from sklearn.model_selection import train_test_split
 
@@ -33,6 +33,7 @@ def generator(samples, batch_size=1):
 				for camera_idx in range(3):
 					name = './IMG/'+batch_sample[camera_idx].split('/')[-1]
 					image = cv2.imread(name)
+					print(name)
 					images.append(image)	
 					angle = float(batch_sample[3])
 					angles.append(angle)
@@ -82,8 +83,7 @@ model.add(Dense(10))
 model.add(Dropout(0.2))
 model.add(Dense(1))
 
-model.compile(loss='mse', optimizer='adam')
-model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=2)
+model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
+model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=10)
 
 model.save('model.h5')
-
