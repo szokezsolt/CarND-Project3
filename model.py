@@ -26,14 +26,14 @@ correction = 0.15
   
 for sample in samples:            
 	for camera_idx in range(3):
-	name = './IMG/'+sample[camera_idx].split('/')[-1]
-	image = cv2.imread(name)
-	image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-	images.append(image)	
-	angle = float(sample[3])
-	angles.append(angle)
-	angles.append(angle+correction)
-	angles.append(angle-correction)
+		name = './IMG/'+sample[camera_idx].split('/')[-1]
+		image = cv2.imread(name)
+		image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+		images.append(image)	
+		angle = float(sample[3])
+		angles.append(angle)
+		angles.append(angle+correction)
+		angles.append(angle-correction)
 
 for image, angle in zip(images, angles):
 	augmented_images.append(image)
