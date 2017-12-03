@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 
 My project includes the following files:
 * model.py containing the script to create and train the model
-* drive.py for driving the car in autonomous mode
+* drive.py for driving the car in autonomous mode (Udacity's default one, unchanged)
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results
 * video.mp4 showing a lap of driving the car autonomously
