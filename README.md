@@ -8,7 +8,7 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Files Submitted & Code Quality
@@ -66,34 +66,34 @@ The final step was to run the simulator to see how well the car was driving arou
 
 The final model architecture (model.py lines 60-86) consisted of a convolution neural network. Here is the summary of the network: 
 
-Layer (type)                 Output Shape              Param #   
-
-lambda_1 (Lambda)            (None, 160, 320, 3)       0         
-cropping2d_1 (Cropping2D)    (None, 65, 320, 3)        0         
-conv2d_1 (Conv2D)            (None, 31, 158, 24)       1824      
-elu_1 (ELU)                  (None, 31, 158, 24)       0         
-conv2d_2 (Conv2D)            (None, 14, 77, 36)        21636     
-elu_2 (ELU)                  (None, 14, 77, 36)        0         
-conv2d_3 (Conv2D)            (None, 10, 73, 48)        43248     
-elu_3 (ELU)                  (None, 10, 73, 48)        0         
-conv2d_4 (Conv2D)            (None, 8, 71, 64)         27712     
-elu_4 (ELU)                  (None, 8, 71, 64)         0         
-conv2d_5 (Conv2D)            (None, 6, 69, 64)         36928     
-elu_5 (ELU)                  (None, 6, 69, 64)         0         
-max_pooling2d_1 (MaxPooling2 (None, 3, 34, 64)         0         
-flatten_1 (Flatten)          (None, 6528)              0         
-dropout_1 (Dropout)          (None, 6528)              0         
-elu_6 (ELU)                  (None, 6528)              0         
-dense_1 (Dense)              (None, 100)               652900    
-dropout_2 (Dropout)          (None, 100)               0         
-elu_7 (ELU)                  (None, 100)               0         
-dense_2 (Dense)              (None, 50)                5050      
-dropout_3 (Dropout)          (None, 50)                0         
-elu_8 (ELU)                  (None, 50)                0         
-dense_3 (Dense)              (None, 10)                510       
-dropout_4 (Dropout)          (None, 10)                0         
-elu_9 (ELU)                  (None, 10)                0         
-dense_4 (Dense)              (None, 1)                 11        
+|Layer (type)                |Output Shape             |Param #|  
+|----------------------------|-------------------------|------:|
+|lambda_1 (Lambda)           |(None, 160, 320, 3)      |0      |   
+|cropping2d_1 (Cropping2D)   |(None, 65, 320, 3)       |0      |   
+|conv2d_1 (Conv2D)           |(None, 31, 158, 24)      |1824   |   
+|elu_1 (ELU)                 |(None, 31, 158, 24)      |0      |   
+|conv2d_2 (Conv2D)           |(None, 14, 77, 36)       |21636  |   
+|elu_2 (ELU)                 |(None, 14, 77, 36)       |0      |   
+|conv2d_3 (Conv2D)           |(None, 10, 73, 48)       |43248  |   
+|elu_3 (ELU)                 |(None, 10, 73, 48)       |0      |   
+|conv2d_4 (Conv2D)           |(None, 8, 71, 64)        |27712  |   
+|elu_4 (ELU)                 |(None, 8, 71, 64)        |0      |   
+|conv2d_5 (Conv2D)           |(None, 6, 69, 64)        |36928  |   
+|elu_5 (ELU)                 |(None, 6, 69, 64)        |0      |   
+|max_pooling2d_1 (MaxPooling2|(None, 3, 34, 64)        |0      |   
+|flatten_1 (Flatten)         |(None, 6528)             |0      |   
+|dropout_1 (Dropout)         |(None, 6528)             |0      |   
+|elu_6 (ELU)                 |(None, 6528)             |0      |   
+|dense_1 (Dense)             |(None, 100)              |652900 |   
+|dropout_2 (Dropout)         |(None, 100)              |0      |   
+|elu_7 (ELU)                 |(None, 100)              |0      |   
+|dense_2 (Dense)             |(None, 50)               |5050   |   
+|dropout_3 (Dropout)         |(None, 50)               |0      |   
+|elu_8 (ELU)                 |(None, 50)               |0      |   
+|dense_3 (Dense)             |(None, 10)               |510    |   
+|dropout_4 (Dropout)         |(None, 10)               |0      |   
+|elu_9 (ELU)                 |(None, 10)               |0      |   
+|dense_4 (Dense)             |(None, 1)                |11     |   
 
 Total params: 789,819
 Trainable params: 789,819
